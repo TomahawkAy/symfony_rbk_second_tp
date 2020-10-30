@@ -1,0 +1,26 @@
+<table>
+<tr>
+    <th>Id</th>
+    <th>title</th>
+    <th>target amount</th>
+    <th>current amount</th>
+    <th>owner</th>
+    <th>contributions</th>
+</tr>
+    {% for cagnotte in cagnottes %}
+    <tr>
+        <td>{{ cagnotte.id }}</td>
+        <td>{{ cagnotte.title }}</td>
+        <td>{{ cagnotte.targetAmount }}</td>
+        <td>{{ cagnotte.currentAmount }}</td>
+        <td>{{ cagnotte.user.name }}</td>
+        <td>
+            <form method="post" action="{{ path('cagnotte_contribution',{'id': cagnotte.id}) }}">
+                <input type="number" name="contribution">
+                &nbsp;
+                 <input type="submit" value="contribute">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
